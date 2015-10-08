@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.social.solution">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="22"
+        tools:overrideLibrary="com.melnykov.fab" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Tweet Sort"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label"
+        android:name=".unused.MyApplication">
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"> </meta-data>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9f9445c111d388f9254fcf4c3385bfd827ce26e5" />
+
+
+
+        <activity android:name=".unused.MainActivity" > </activity>
+        <activity android:name=".unused.ShowTweet" android:theme="@android:style/Theme.Translucent"> </activity>
+        <activity android:name=".unused.ShowImage" > </activity>
+        <activity
+            android:name=".activity.UserProfile"
+            android:theme="@style/AppTheme.Toolbar">
+        </activity>
+        <activity android:name=".unused.StartActivity" > </activity>
+        <activity android:name=".activity.LoginActivity" > </activity>
+        <activity android:name=".unused.AddSegmentActivity" > </activity>
+
+
+        <activity android:name="com.mopub.mobileads.MoPubActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.mopub.mobileads.MraidActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.mopub.common.MoPubBrowser"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+
+        <activity
+            android:name=".activity.TrendingTweetsActivity"
+            android:theme="@style/Toolbar"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name=".activity.ViewPagerTabListViewActivity"
+            android:label="TweetSort"
+            android:theme="@style/AppTheme.Toolbar"
+            android:screenOrientation="portrait">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".activity.MyMainActivity"
+            android:label="@string/my_app_name"
+            android:theme="@style/AppTheme.Toolbar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

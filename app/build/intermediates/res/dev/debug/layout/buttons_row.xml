@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:widget="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:id="@+id/newsrows">
+
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="30dp">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="30dp"
+        android:layout_width="0dp"
+        android:layout_weight=".8">
+            <ImageButton
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:src="@drawable/retweet"
+                android:id="@+id/retweetimagebutton">
+            </ImageButton>
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:paddingTop="5dp"
+                android:id="@+id/retweetcounttext">
+            </TextView>
+            <ImageButton
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:src="@drawable/favorite"
+                android:id="@+id/favoriteimagebutton">
+            </ImageButton>
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:paddingTop="5dp"
+                android:id="@+id/favoritecounttext">
+            </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="30dp">
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/Users/pranjalsahu/Downloads/MyViewPager/app/src/main/res/layout/buttons_row.xml -->

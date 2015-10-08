@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp">
+
+    <item android:id="@+id/sortbytweetcount"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="menuitem_refresh"
+        android:alphabeticShortcut="r"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        tools:ignore="AlwaysShowAction,AppCompatResource" />
+
+    <item android:id="@+id/sortbyfavoritecount"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="menuitem_refresh"
+        android:alphabeticShortcut="r"
+        android:orderInCategory="1"
+        android:showAsAction="always" />
+
+    <item android:id="@+id/composetweet"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="menuitem_refresh"
+        android:alphabeticShortcut="r"
+        android:orderInCategory="1"
+        android:showAsAction="always" />
+
+</menu>
+<!-- From: file:/Users/pranjalsahu/Downloads/MyViewPager/app/src/main/res/menu/airport_menu.xml -->

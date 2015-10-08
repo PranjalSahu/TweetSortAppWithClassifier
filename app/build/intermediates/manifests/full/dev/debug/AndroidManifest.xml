@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.social.solution"
+    android:versionCode="6"
+    android:versionName="1.32" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <application
+        android:name="com.social.solution.unused.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Tweet Sort"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" >
+        </meta-data>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9f9445c111d388f9254fcf4c3385bfd827ce26e5" />
+
+        <activity android:name="com.social.solution.unused.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.social.solution.unused.ShowTweet"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity android:name="com.social.solution.unused.ShowImage" >
+        </activity>
+        <activity
+            android:name="com.social.solution.activity.UserProfile"
+            android:theme="@style/AppTheme.Toolbar" >
+        </activity>
+        <activity android:name="com.social.solution.unused.StartActivity" >
+        </activity>
+        <activity android:name="com.social.solution.activity.LoginActivity" >
+        </activity>
+        <activity android:name="com.social.solution.unused.AddSegmentActivity" >
+        </activity>
+        <activity
+            android:name="com.mopub.mobileads.MoPubActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.mopub.mobileads.MraidActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.mopub.common.MoPubBrowser"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name="com.social.solution.activity.TrendingTweetsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Toolbar" >
+        </activity>
+        <activity
+            android:name="com.social.solution.activity.ViewPagerTabListViewActivity"
+            android:label="TweetSort"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Toolbar" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.social.solution.activity.MyMainActivity"
+            android:label="@string/my_app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Toolbar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="android.support.v7.widget.TestActivity"
+            android:label="RecyclerViewTestActivity" />
+        <activity
+            android:name="com.twitter.sdk.android.core.identity.OAuthActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name="com.twitter.sdk.android.core.identity.ShareEmailActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:icon="@drawable/tw__transparent"
+            android:label="@string/kit_name" />
+        <activity
+            android:name="com.digits.sdk.android.PhoneNumberActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.digits.sdk.android.ConfirmationCodeActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.digits.sdk.android.LoginCodeActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.digits.sdk.android.PinCodeActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.digits.sdk.android.FailureActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:taskAffinity="com.digits.sdk.android" />
+        <activity
+            android:name="com.digits.sdk.android.ContactsActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name="com.digits.sdk.android.PhoneNumberActionBarActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.digits.sdk.android.ConfirmationCodeActionBarActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.digits.sdk.android.LoginCodeActionBarActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="com.digits.sdk.android.FailureActionBarActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:taskAffinity="com.digits.sdk.android" />
+        <activity
+            android:name="com.digits.sdk.android.ContactsActionBarActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name="com.digits.sdk.android.PinCodeActionBarActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:taskAffinity="com.digits.sdk.android"
+            android:windowSoftInputMode="stateVisible" />
+
+        <service
+            android:name="com.digits.sdk.android.ContactsUploadService"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>

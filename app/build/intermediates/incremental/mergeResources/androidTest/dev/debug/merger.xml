@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/pranjalsahu/Downloads/MyViewPager/app/src/androidTest/res"/><source path="/Users/pranjalsahu/Downloads/MyViewPager/app/build/generated/res/rs/androidTest/dev/debug"/><source path="/Users/pranjalsahu/Downloads/MyViewPager/app/build/generated/res/generated/androidTest/dev/debug"/></dataSet><dataSet config="androidTestDev"><source path="/Users/pranjalsahu/Downloads/MyViewPager/app/src/androidTestDev/res"/></dataSet><mergedItems/></merger>

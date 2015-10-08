@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tw__tweet_view_pran"
+    style="@style/tw__TweetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--<style="@style/tw__TweetAvatar"></style>-->
+
+    <ImageView
+        tools:ignore="ContentDescription"
+        android:id="@+id/tw__tweet_author_avatar_pran"
+        android:layout_height="36dp"
+        android:layout_width="36dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="8dp"
+        tools:background="@color/tw__tweet_media_preview_bg_color"/>
+
+    <TextView
+        android:id="@+id/tw__tweet_author_full_name_pran"
+        style="@style/tw__TweetFullName"
+        android:layout_toRightOf="@id/tw__tweet_author_avatar_pran"
+        android:layout_toEndOf="@id/tw__tweet_author_avatar_pran"
+        tools:text="Jack"/>
+
+    <ImageView
+        tools:ignore="ContentDescription"
+        android:id="@+id/tw__full_ad_image"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@id/tw__tweet_author_full_name_pran"
+        tools:background="@color/tw__tweet_media_preview_bg_color"/>
+
+    <TextView
+        android:id="@+id/tw__tweet_text_pran"
+        style="@style/tw__TweetText"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/tw__full_ad_image"
+        android:visibility="visible"
+        tools:text="just setting up my twttr"
+        tools:visibility="visible"/>
+
+   </RelativeLayout>
+    <!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/kits/tweetui/src/main/res/layout/tw__tweet.xml -->

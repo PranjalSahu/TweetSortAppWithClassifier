@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/originaltimeline"
+        android:icon="@drawable/ic_format_line_spacing_white_24dp"
+        android:title="Original Timeline"
+        app:showAsAction="always"
+        android:menuCategory="secondary"/>
+
+    <item
+        android:id="@+id/sortitemsbytweet"
+        android:icon="@drawable/ic_repeat_white_24dp"
+        android:title="Sort Items By Tweet"
+        app:showAsAction="always"
+        android:menuCategory="secondary" />
+
+    <item
+        android:id="@+id/sortitemsbyfavorites"
+        android:icon="@drawable/ic_star_rate_white_18dp"
+        android:title="Sort Items By Favorites"
+        app:showAsAction="always"
+        android:menuCategory="secondary" />
+
+</menu><!-- From: file:/Users/pranjalsahu/Downloads/MyViewPager/app/src/main/res/menu/mymenutrend.xml -->

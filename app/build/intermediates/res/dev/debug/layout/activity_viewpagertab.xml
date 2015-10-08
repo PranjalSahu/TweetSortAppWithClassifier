@@ -1,0 +1,70 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    Padding for ViewPager must be set outside the ViewPager itself
+    because with padding, EdgeEffect of ViewPager become strange.
+    -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/tab_height">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3B6AA0"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#3B6AA0"
+            android:minHeight="@dimen/abc_action_bar_default_height_material"
+            app:popupTheme="@style/Theme.AppCompat.NoActionBar"
+            app:theme="@style/Toolbar">
+            <!--            android:background="#18376a"-->
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
+                <com.social.solution.others.SquareImageView
+                    android:layout_height="50dp"
+                    android:layout_width="50dp"
+                    android:id="@+id/userimage"
+                    android:layout_gravity="center">
+                </com.social.solution.others.SquareImageView>
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <com.social.solution.others.SlidingTabLayout
+            android:id="@+id/sliding_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:background="#3B6AA0" />
+    </LinearLayout>
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_mode_edit_white_24dp"
+        android:layout_gravity="bottom|right"
+        app:fab_colorNormal="@color/accentLight"
+        app:fab_colorPressed="@color/accent" />
+</FrameLayout><!-- From: file:/Users/pranjalsahu/Downloads/MyViewPager/app/src/main/res/layout/activity_viewpagertab.xml -->

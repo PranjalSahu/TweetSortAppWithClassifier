@@ -1,0 +1,7 @@
+int id native_cta 0x7f030005
+int id native_icon_image 0x7f030001
+int id native_main_image 0x7f030004
+int id native_outer_view 0x7f030000
+int id native_text 0x7f030003
+int id native_title 0x7f030002
+int layout example_native_ad 0x7f020000
