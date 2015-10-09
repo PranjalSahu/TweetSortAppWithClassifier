@@ -31,6 +31,7 @@ import com.twitter.sdk.android.tweetui.TweetUi;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -265,11 +266,18 @@ public class HelperFunctions {
         if(nb == null){
             NaiveBayesKnowledgeBase knowledgeBase = null;
             try {
-                FileInputStream fis   = new FileInputStream("mybean.ser");
+                //FileInputStream fis   = new FileInputStream(R.raw.mybean);
+                InputStream fis = context.getResources().openRawResource(context.getResources().getIdentifier("raw/mybean", "raw", context.getPackageName()));
+                System.out.println("PRANJAL fis available " + fis.available());
                 ObjectInputStream ois = new ObjectInputStream(fis);
+                System.out.println("PRANJAL ois available " + ois.available());
+                //ObjectInputStream ois = new ObjectInputStream(fis);
                 knowledgeBase         = (NaiveBayesKnowledgeBase) ois.readObject();
+                System.out.println("PRANJAL knowledgeBase is " + knowledgeBase);
                 ois.close();
             } catch (IOException e) {
+                System.out.println(e.getMessage() +" "+"pranal");
+                //e.printStackTrace();
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -300,6 +308,11 @@ public class HelperFunctions {
             return true;
         if(position == 1)                       // for verified tweets
             return t.user.verified;
+        if(position == 3)
+            return HelperFunctions.nb.predict(t.text).equals("cricket");
+        if(position == 4)
+            return HelperFunctions.nb.predict(t.text).equals("tech");
+
 
         //System.out.println("YOYO "+t.user.name);
         boolean flag = false;

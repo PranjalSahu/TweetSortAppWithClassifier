@@ -348,6 +348,8 @@ public class ViewPagerTabListViewActivity extends BaseActivity implements Observ
             HelperFunctions.TITLES.add(0, "TimeLine");
             HelperFunctions.TITLES.add(1, "Verified");
             HelperFunctions.TITLES.add(2, "Trending");
+            HelperFunctions.TITLES.add(2, "Cricket");
+            HelperFunctions.TITLES.add(2, "Technology");
         }
 
         mRequestQueue = Volley.newRequestQueue(this);

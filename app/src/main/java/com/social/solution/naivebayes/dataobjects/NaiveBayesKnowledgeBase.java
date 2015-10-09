@@ -16,6 +16,7 @@
  */
 package com.social.solution.naivebayes.dataobjects;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +27,7 @@ import java.util.Map;
  * @author Vasilis Vryniotis <bbriniotis at datumbox.com>
  * @see <a href="http://blog.datumbox.com/developing-a-naive-bayes-text-classifier-in-java/">http://blog.datumbox.com/developing-a-naive-bayes-text-classifier-in-java/</a>
  */
-public class NaiveBayesKnowledgeBase implements Serializable{
+public class NaiveBayesKnowledgeBase implements Serializable {
     /**
      * number of training observations
      */
