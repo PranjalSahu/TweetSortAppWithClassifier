@@ -16,6 +16,8 @@
  */
 package com.social.solution.naivebayes.classifiers;
 
+import android.support.v7.widget.RecyclerView;
+
 import com.social.solution.naivebayes.dataobjects.Document;
 import com.social.solution.naivebayes.dataobjects.FeatureStats;
 import com.social.solution.naivebayes.dataobjects.NaiveBayesKnowledgeBase;
@@ -273,13 +275,15 @@ public class NaiveBayes {
      * @throws IllegalArgumentException
      */
     public String predict(String text) throws IllegalArgumentException {
+        //System.out.println("pranjaltesting: " + text);
+        Map<String, Double> results = new HashMap<String, Double>();
+
         if(knowledgeBase == null) {
             throw new IllegalArgumentException("Knowledge Bases missing: Make sure you train first a classifier before you use it.");
         }
         
         //Tokenizes the text and creates a new document
         Document doc = TextTokenizer.tokenize(text);
-        
         
         String category;
         String feature;
@@ -307,13 +311,32 @@ public class NaiveBayes {
                 logprob += occurrences*knowledgeBase.logLikelihoods.get(feature).get(category); //multiply loglikelihood score with occurrences
             }
             //predictionScores.put(category, logprob); 
-            
+
+            //System.out.println("pranjaltesting "+category+" "+logprob);
+
+            results.put(category, maxScore);
             if(logprob>maxScore) {
-                maxScore=logprob;
-                maxScoreCategory=category;
+                maxScore         = logprob;
+                maxScoreCategory = category;
             }
         }
-        
-        return maxScoreCategory; //return the category with heighest score
+
+        Double t = results.get("tech");
+        Double c = results.get("cricket");
+        System.out.println("t = "+" c = "+c);
+
+        t = -t;
+        c= -c;
+
+
+        //return the category with heighest score
+        if(Math.abs(t-c)/(t>c?c:t) > 0.3) {
+            System.out.println("pranjal "+text+" "+maxScoreCategory+" "+t+" "+c);
+            return maxScoreCategory;
+        }
+        else {
+            System.out.println("pranjal "+text+" "+"garbage"+" "+t+" "+c);
+            return "garbage";
+        }
     }
 }

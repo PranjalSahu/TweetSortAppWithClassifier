@@ -348,8 +348,8 @@ public class ViewPagerTabListViewActivity extends BaseActivity implements Observ
             HelperFunctions.TITLES.add(0, "TimeLine");
             HelperFunctions.TITLES.add(1, "Verified");
             HelperFunctions.TITLES.add(2, "Trending");
-            HelperFunctions.TITLES.add(2, "Cricket");
-            HelperFunctions.TITLES.add(2, "Technology");
+            HelperFunctions.TITLES.add(3, "Cricket");
+            HelperFunctions.TITLES.add(4, "Technology");
         }
 
         mRequestQueue = Volley.newRequestQueue(this);
@@ -392,7 +392,7 @@ public class ViewPagerTabListViewActivity extends BaseActivity implements Observ
         mPagerAdapter = new NavigationAdapter(getSupportFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOffscreenPageLimit(3);
+        mPager.setOffscreenPageLimit(5);
 
         slidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
         slidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);

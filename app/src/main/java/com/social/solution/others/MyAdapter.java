@@ -1,7 +1,12 @@
 package com.social.solution.others;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +15,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import com.social.solution.HelperFunctions;
 import com.social.solution.R;
@@ -33,6 +38,7 @@ import twitter4j.JSONObject;
 public class MyAdapter extends TweetViewAdapter {
 
     LayoutInflater inflater         = null;
+    private Context context;
 
     private int mLastPosition = -1;
 
@@ -40,8 +46,8 @@ public class MyAdapter extends TweetViewAdapter {
 
     public MyAdapter(Context context){
         super(context);
-        inflater = LayoutInflater.from(context);
-
+        inflater     = LayoutInflater.from(context);
+        this.context = context;
     }
 
     private void updateTweet(Tweet updateTweet){
@@ -57,11 +63,7 @@ public class MyAdapter extends TweetViewAdapter {
 
         tl.set(pos, updateTweet);
         this.setTweets(tl);
-        System.out.println("tweet updated " + updateTweet.id + " old: " + this.getTweetAtPosition(pos).favorited + " new: " + updateTweet.favorited);
-
         this.notifyDataSetChanged();
-
-        System.out.println("tweet updated checking " + this.getTweetAtPosition(pos).id + " " + this.getTweetAtPosition(pos).favorited);
         return;
     }
 
@@ -108,18 +110,50 @@ public class MyAdapter extends TweetViewAdapter {
         return this.getItem(position);
     }
 
+    public void onClickWhatsApp(View view, View showview) {
+
+        Uri uri = null;
+
+        if(showview != null) {
+            //System.out.println("pranjal whatsapp");
+            Bitmap bmp = HelperFunctions.loadBitmapFromView(showview);
+            uri    = HelperFunctions.getImageUri(context, bmp);
+            //HelperFunctions.showImage(context, uri);
+        }
+
+        PackageManager pm = context.getPackageManager();
+        try {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            String title =  ((Tweet) view.getTag()).text;
+            shareIntent.putExtra(Intent.EXTRA_TEXT, title);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            shareIntent.setType("image/*");
+            PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            shareIntent.setPackage("com.whatsapp");
+            context.startActivity(Intent.createChooser(shareIntent, "Share image via:"));
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(context, "WhatsApp not Installed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public View getView(final int position, View convertView, ViewGroup parent) {
         Object rowView    = convertView;
         final Tweet tweet = this.getItem(position);
 
-        System.out.println("getview "+tweet.idStr+" "+tweet.favorited);
+        //System.out.println("getview " + tweet.idStr + " " + tweet.favorited);
 
         if(convertView == null) {
+            //this.getTweetView(this.context, tweet).find
             rowView          = this.getTweetView(this.context, tweet);
+            final View checkview = (View)rowView;
+
             View buttonsRow  = inflater.inflate(R.layout.buttons_row, parent, false);
 
             final ImageButton iv2 = (ImageButton)buttonsRow.findViewById(R.id.retweetimagebutton);
             final ImageButton iv3 = (ImageButton)buttonsRow.findViewById(R.id.favoriteimagebutton);
+            final ImageButton iv4 = (ImageButton)buttonsRow.findViewById(R.id.sharewhatsapp);
             final TextView     t1 = (TextView)buttonsRow.findViewById(R.id.retweetcounttext);
             final TextView     t2 = (TextView)buttonsRow.findViewById(R.id.favoritecounttext);
 
@@ -127,13 +161,15 @@ public class MyAdapter extends TweetViewAdapter {
             t2.setTag(tweet);
             iv2.setTag(tweet);
             iv3.setTag(tweet);
+            iv4.setTag(tweet);
 
-            System.out.println("Retweet count: "+tweet.retweetCount+" Favorite count : "+tweet.favoriteCount);
+            //System.out.println("Retweet count: " + tweet.retweetCount + " Favorite count : " + tweet.favoriteCount);
             t1.setText(Integer.toString(tweet.retweetCount));
             t2.setText(Integer.toString(tweet.favoriteCount));
 
             iv2.setBackgroundColor(0);
             iv3.setBackgroundColor(0);
+            iv4.setBackgroundColor(0);
 
             defaultColor = t1.getTextColors().getDefaultColor();
 
@@ -202,6 +238,12 @@ public class MyAdapter extends TweetViewAdapter {
                 }
             });
 
+            iv4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickWhatsApp(v, checkview);
+                }
+            });
 
 
             LinearLayout lv1 = (LinearLayout)inflater.inflate(R.layout.tweet_card_view, null);
@@ -218,6 +260,9 @@ public class MyAdapter extends TweetViewAdapter {
 
         } else {
 
+            final View checkview = ((BaseTweetView)((LinearLayout)((LinearLayout) convertView).findViewById(R.id.card_view_linear))
+                    .getChildAt(0));
+
             ((BaseTweetView)((LinearLayout)((LinearLayout) convertView).findViewById(R.id.card_view_linear))
                     .getChildAt(0))
                     .setTweet(tweet);
@@ -233,20 +278,23 @@ public class MyAdapter extends TweetViewAdapter {
             View btnRow              = ((LinearLayout)((LinearLayout) rowView).findViewById(R.id.card_view_linear)).getChildAt(1);
             final ImageButton child1 = (ImageButton)btnRow.findViewById(R.id.retweetimagebutton);
             final ImageButton child2 = (ImageButton)btnRow.findViewById(R.id.favoriteimagebutton);
+            final ImageButton child3 = (ImageButton)btnRow.findViewById(R.id.sharewhatsapp);
             final TextView t1        = (TextView)btnRow.findViewById(R.id.retweetcounttext);
             final TextView t2        = (TextView)btnRow.findViewById(R.id.favoritecounttext);
 
             child1.setEnabled(true);
             child2.setEnabled(true);
+            child3.setEnabled(true);
             t1.setEnabled(true);
             t2.setEnabled(true);
 
             child1.setTag(tweet);
             child2.setTag(tweet);
+            child3.setTag(tweet);
             t1.setTag(tweet);
             t2.setTag(tweet);
 
-            System.out.println("Retweet count: " + Integer.toString(((Tweet) t1.getTag()).retweetCount) + " Favorite count : " + Integer.toString(((Tweet) t2.getTag()).favoriteCount));
+            //System.out.println("Retweet count: " + Integer.toString(((Tweet) t1.getTag()).retweetCount) + " Favorite count : " + Integer.toString(((Tweet) t2.getTag()).favoriteCount));
 
             t1.setText(Integer.toString(((Tweet) t1.getTag()).retweetCount));
             t2.setText(Integer.toString(((Tweet) t2.getTag()).favoriteCount));
@@ -273,8 +321,10 @@ public class MyAdapter extends TweetViewAdapter {
            child2.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
+
+                   //onClickWhatsApp(v, checkview);
+
                    final Tweet tempTweet = (Tweet) v.getTag();
-                   //Toast.makeText(context, tempTweet.user.name, Toast.LENGTH_SHORT).show();
 
                    if(!tempTweet.favorited)
                        child2.setImageResource(R.drawable.favorite_on);
@@ -284,9 +334,8 @@ public class MyAdapter extends TweetViewAdapter {
                        HelperFunctions.favoriteService.create(tempTweet.id, false, new Callback<Tweet>() {
                            @Override
                            public void success(Result<Tweet> result) {
-                               System.out.println("vani temp:" + HelperFunctions.gson.toJson(tempTweet));
-                               System.out.println("vani result:" + HelperFunctions.gson.toJson(result.data));
-
+                               //System.out.println("vani temp:" + HelperFunctions.gson.toJson(tempTweet));
+                               //System.out.println("vani result:" + HelperFunctions.gson.toJson(result.data));
                                String originalJson = HelperFunctions.gson.toJson(tempTweet);
                                String newJson = HelperFunctions.gson.toJson(result.data);
                                JSONObject jsonObjOriginal = null;
@@ -318,8 +367,6 @@ public class MyAdapter extends TweetViewAdapter {
                                //Toast.makeText(context, "Favorite Not Done", Toast.LENGTH_SHORT).show();
                            }
                        });
-                   } else {
-
                    }
                }
            });
@@ -352,7 +399,16 @@ public class MyAdapter extends TweetViewAdapter {
 
                 }
             });
+
+            child3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickWhatsApp(v, checkview);
+                }
+            });
         }
+
+
 
         if(HelperFunctions.animate) {
             TranslateAnimation animation = null;

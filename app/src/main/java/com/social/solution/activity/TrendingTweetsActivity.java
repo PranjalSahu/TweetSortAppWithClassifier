@@ -16,6 +16,7 @@
 
 package com.social.solution.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
@@ -25,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.ksoichiro.android.observablescrollview.ObservableListView;
@@ -92,8 +94,8 @@ public class TrendingTweetsActivity extends BaseActivity {
 
         //setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        mHeaderView = findViewById(R.id.header);
-        ViewCompat.setElevation(mHeaderView, getResources().getDimension(R.dimen.toolbar_elevation));
+        //mHeaderView = findViewById(R.id.header);
+        //ViewCompat.setElevation(mHeaderView, getResources().getDimension(R.dimen.toolbar_elevation));
 
         tweetlist = new ArrayList<Tweet>();
         LoadTrendingTweets();
@@ -181,7 +183,7 @@ public class TrendingTweetsActivity extends BaseActivity {
             return true;
         }
         else if(id == android.R.id.home) {
-            System.out.println("pranjalsahu TrendingTweetsActivity");
+            //System.out.println("pranjalsahu TrendingTweetsActivity");
             this.finish();
             overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             return true;

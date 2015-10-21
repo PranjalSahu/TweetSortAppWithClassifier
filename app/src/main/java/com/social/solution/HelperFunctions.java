@@ -76,6 +76,7 @@ public class HelperFunctions {
     public static SearchService searchService = null;
     public static NaiveBayes nb;
 
+    //twitter4j.auth.
     SearchService ss;
 
 
@@ -233,6 +234,7 @@ public class HelperFunctions {
             HelperFunctions.currentSession = Twitter.getSessionManager().getActiveSession();
         }
 
+        //HelperFunctions.currentSession.
         ConfigurationBuilder config = new ConfigurationBuilder();
         config.setJSONStoreEnabled(true);
         config.setOAuthConsumerKey(Keys.TWITTER_KEY);
@@ -267,13 +269,15 @@ public class HelperFunctions {
             NaiveBayesKnowledgeBase knowledgeBase = null;
             try {
                 //FileInputStream fis   = new FileInputStream(R.raw.mybean);
-                InputStream fis = context.getResources().openRawResource(context.getResources().getIdentifier("raw/mybean", "raw", context.getPackageName()));
-                System.out.println("PRANJAL fis available " + fis.available());
+                //context.getResources().getr
+                InputStream fis = context.getResources().openRawResource(R.raw.mybean);
+                //InputStream fis = context.getResources().openRawResource(context.getResources().getIdentifier("raw/mybean", "raw", context.getPackageName()));
+                //System.out.println("PRANJAL fis available " + fis.available());
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                System.out.println("PRANJAL ois available " + ois.available());
+                //System.out.println("PRANJAL ois available " + ois.available());
                 //ObjectInputStream ois = new ObjectInputStream(fis);
                 knowledgeBase         = (NaiveBayesKnowledgeBase) ois.readObject();
-                System.out.println("PRANJAL knowledgeBase is " + knowledgeBase);
+                //System.out.println("PRANJAL knowledgeBase is " + knowledgeBase);
                 ois.close();
             } catch (IOException e) {
                 System.out.println(e.getMessage() +" "+"pranal");
